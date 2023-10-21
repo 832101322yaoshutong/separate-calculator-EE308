@@ -1,58 +1,76 @@
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="button"] {
+            width: 48%;
+            padding: 10px;
+            margin: 5px;
+        }
+        #ans {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <div class="calculator">
-        <div class="display">
-            <input type="text" id="result" readonly>
-        </div>
-        <div class="buttons">
-            <div class="row">
-                <button onclick="clearDisplay()">C</button>
-                <button onclick="appendNumber('7')">7</button>
-                <button onclick="appendNumber('8')">8</button>
-                <button onclick="appendNumber('9')">9</button>
-                <button onclick="appendOperator('/')">/</button>
-            </div>
-            <div class="row">
-                <button onclick="appendNumber('4')">4</button>
-                <button onclick="appendNumber('5')">5</button>
-                <button onclick="appendNumber('6')">6</button>
-                <button onclick="appendOperator('*')">*</button>
-            </div>
-            <div class="row">
-                <button onclick="appendNumber('1')">1</button>
-                <button onclick="appendNumber('2')">2</button>
-                <button onclick="appendNumber('3')">3</button>
-                <button onclick="appendOperator('-')">-</button>
-            </div>
-            <div class="row">
-                <button onclick="appendNumber('0')">0</button>
-                <button onclick="appendOperator('+')">+</button>
-                <button onclick="calculate()">=</button>
-            </div>
-            <div class="row">
-                <button onclick="appendOperator('%')">%</button>
-                <button onclick="appendFunction('sin')">sin</button>
-                <button onclick="appendFunction('cos')">cos</button>
-                <button onclick="appendFunction('tan')">tan</button>
-            </div>
-            <div class="row">
-                <button onclick="appendFunction('log')">log</button>
-                <button onclick="appendFunction('sqrt')">sqrt</button>
-                <button onclick="appendNumber('.')">.</button>
-                <button onclick="appendNumber('ans')">ans</button>
-            </div>
-        </div>
+    <div class="container">
+        <h1>Calculator</h1>
+        <input type="text" id="input">
+        <input type="button" value="1" onclick="appendNumber(1)">
+        <input type="button" value="2" onclick="appendNumber(2)">
+        <input type="button" value="3" onclick="appendNumber(3)">
+        <input type="button" value="+" onclick="appendOperator('+')">
+        <br>
+        <input type="button" value="4" onclick="appendNumber(4)">
+        <input type="button" value="5" onclick="appendNumber(5)">
+        <input type="button" value="6" onclick="appendNumber(6)">
+        <input type="button" value="-" onclick="appendOperator('-')">
+        <br>
+        <input type="button" value="7" onclick="appendNumber(7)">
+        <input type="button" value="8" onclick="appendNumber(8)">
+        <input type="button" value="9" onclick="appendNumber(9)">
+        <input type="button" value="*" onclick="appendOperator('*')">
+        <br>
+        <input type="button" value="0" onclick="appendNumber(0)">
+        <input type="button" value="." onclick="appendNumber('.')">
+        <input type="button" value="=" onclick="calculate()">
+        <input type="button" value="/" onclick="appendOperator('/')">
+        <br>
+        <input type="button" value="%" onclick="calculatePercentage()">
+        <input type="button" value="sin" onclick="calculateSin()">
+        <input type="button" value="cos" onclick="calculateCos()">
+        <input type="button" value="log" onclick="calculateLog()">
+        <br>
+        <input type="button" value="ans" onclick="showHistory()">
+        <input type="button" value="clear" onclick="clearInput()">
+        <input type="button" value="delete" onclick="deleteLastCharacter()">
+        <br>
+        <input type="text" id="ans" readonly>
     </div>
-
-    <script src="script.js"></script>
+ 
+    <script src="app.js"></script>
 </body>
 </html>
-<css>
-<head>
