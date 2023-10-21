@@ -1,32 +1,81 @@
-let expression = '';
-let ans = '';
-
-function appendNumber(number) {
-    if (number === 'ans') {
-        document.getElementById('result').value += ans;
-    } else {
-        document.getElementById('result').value += number;
-    }
+function appendNumber(num) {
+    document.getElementById('input').value += num;
 }
-
+ 
 function appendOperator(operator) {
-    document.getElementById('result').value += operator;
+    document.getElementById('input').value += operator;
 }
-
-function appendFunction(func) {
-    document.getElementById('result').value += func + '(';
-}
-
-function clearDisplay() {
-    document.getElementById('result').value = '';
-}
-
+ 
 function calculate() {
-    expression = document.getElementById('result').value;
-    try {
-        ans = eval(expression);
-        document.getElementById('result').value = ans;
-    } catch (error) {
-        document.getElementById('result').value = 'Error';
-    }
+    let input = document.getElementById('input').value;
+    let url = '/calculate?input=' + encodeURIComponent(input);
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ans').value = data.result;
+        })
+        .catch(error => console.error(error));
+}
+ 
+function calculatePercentage() {
+    let input = document.getElementById('input').value;
+    let url = '/calculatePercentage?input=' + encodeURIComponent(input);
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ans').value = data.result;
+        })
+        .catch(error => console.error(error));
+}
+ 
+function calculateSin() {
+    let input = document.getElementById('input').value;
+    let url = '/calculateSin?input=' + encodeURIComponent(input);
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ans').value = data.result;
+        })
+        .catch(error => console.error(error));
+}
+ 
+function calculateCos() {
+    let input = document.getElementById('input').value;
+    let url = '/calculateCos?input=' + encodeURIComponent(input);
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ans').value = data.result;
+        })
+        .catch(error => console.error(error));
+}
+ 
+function calculateLog() {
+    let input = document.getElementById('input').value;
+    let url = '/calculateLog?input=' + encodeURIComponent(input);
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ans').value = data.result;
+        })
+        .catch(error => console.error(error));
+}
+ 
+function showHistory() {
+    fetch('/history')
+        .then(response => response.json())
+        .then(data => {
+            alert(data.history);
+        })
+        .catch(error => console.error(error));
+}
+ 
+function clearInput() {
+    document.getElementById('input').value = '';
+    document.getElementById('ans').value = '';
+}
+ 
+function deleteLastCharacter() {
+    let input = document.getElementById('input').value;
+    document.getElementById('input').value = input.slice(0, -1);
 }
